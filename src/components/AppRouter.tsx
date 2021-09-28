@@ -5,7 +5,7 @@ import { privateRoutes, publicRoutes, RouteNames } from '../routes'
 interface AppRouterProps {}
 
 const AppRouter: React.FC<AppRouterProps> = () => {
-  const auth = true
+  let auth = false
 
   return (
     <>
