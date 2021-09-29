@@ -4,16 +4,17 @@ import { rules } from '../utils/rules'
 import { useDispatch } from 'react-redux'
 import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import { useActions } from '../hooks/useActions'
 interface LoginFormProps {}
 
 const LoginForm: React.FC<LoginFormProps> = () => {
-  const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const { isLoading, error } = useTypedSelector((state) => state.auth)
+  const { login } = useActions()
 
   const submit = () => {
-    dispatch(AuthActionCreators.login(username, password))
+    login(username, password)
   }
 
   return (

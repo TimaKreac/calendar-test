@@ -6,13 +6,14 @@ import { useHistory } from 'react-router-dom'
 import { RouteNames } from '../routes'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { AuthActionCreators } from '../store/reducers/auth/action-creators'
+import { useActions } from '../hooks/useActions'
 
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
   const router = useHistory()
-  const dispatch = useDispatch()
   const { isAuth, user } = useTypedSelector((state) => state.auth)
+  const { login, logout } = useActions()
 
   return (
     <Layout.Header>
@@ -25,10 +26,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             selectable={false}
             style={{ display: 'flex', justifyContent: 'end' }}
           >
-            <Menu.Item
-              onClick={() => dispatch(AuthActionCreators.logout())}
-              key='1'
-            >
+            <Menu.Item onClick={logout} key='1'>
               Выйти
             </Menu.Item>
           </Menu>
