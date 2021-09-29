@@ -1,11 +1,9 @@
 import React from 'react'
 import { Layout, Row, Menu } from 'antd'
-import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { RouteNames } from '../routes'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 import { useActions } from '../hooks/useActions'
 
 interface NavbarProps {}
@@ -13,7 +11,7 @@ interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
   const router = useHistory()
   const { isAuth, user } = useTypedSelector((state) => state.auth)
-  const { login, logout } = useActions()
+  const { logout } = useActions()
 
   return (
     <Layout.Header>

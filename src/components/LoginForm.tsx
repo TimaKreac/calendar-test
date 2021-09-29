@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import { rules } from '../utils/rules'
-import { useDispatch } from 'react-redux'
-import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { useActions } from '../hooks/useActions'
 interface LoginFormProps {}
@@ -37,9 +35,11 @@ const LoginForm: React.FC<LoginFormProps> = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Item>
-      <Button type='primary' htmlType='submit' loading={isLoading}>
-        Submit
-      </Button>
+      <Form.Item>
+        <Button type='primary' htmlType='submit' loading={isLoading}>
+          Войти
+        </Button>
+      </Form.Item>
     </Form>
   )
 }
